@@ -14,7 +14,7 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String unsername;
+    private String userName;
 
     private double score;
 
@@ -31,12 +31,12 @@ public class Result {
         this.id = id;
     }
 
-    public String getUnsername() {
-        return unsername;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUnsername(String unsername) {
-        this.unsername = unsername;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public double getScore() {

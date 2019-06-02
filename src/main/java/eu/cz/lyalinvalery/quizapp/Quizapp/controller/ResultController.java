@@ -18,7 +18,7 @@ public class ResultController {
     @Autowired
     ResultService resultService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Result> getAllQuizs() {
         return resultService.getAllResults();
     }

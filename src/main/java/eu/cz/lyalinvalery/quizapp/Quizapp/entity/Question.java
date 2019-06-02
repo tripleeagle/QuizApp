@@ -23,7 +23,7 @@ public class Question {
     @JsonIgnore
     private List<Quiz> quizzes;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", cascade = CascadeType.PERSIST)
     private List<QuestionChoice> questionChoices;
 
     public Long getId() {

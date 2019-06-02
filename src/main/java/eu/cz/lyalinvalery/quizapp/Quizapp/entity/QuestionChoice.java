@@ -39,11 +39,11 @@ public class QuestionChoice {
         this.choiceText = choice;
     }
 
-    public boolean isRight() {
+    public boolean getIsRight() {
         return isRight;
     }
 
-    public void setRight(boolean right) {
+    public void setIsRight(boolean right) {
         isRight = right;
     }
 

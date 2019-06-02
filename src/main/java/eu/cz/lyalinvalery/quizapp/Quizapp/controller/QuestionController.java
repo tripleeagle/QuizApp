@@ -1,7 +1,6 @@
 package eu.cz.lyalinvalery.quizapp.Quizapp.controller;
 
 import eu.cz.lyalinvalery.quizapp.Quizapp.entity.Question;
-import eu.cz.lyalinvalery.quizapp.Quizapp.entity.QuestionChoice;
 import eu.cz.lyalinvalery.quizapp.Quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

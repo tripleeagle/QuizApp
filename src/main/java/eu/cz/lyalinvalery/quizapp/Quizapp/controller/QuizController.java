@@ -19,7 +19,7 @@ public class QuizController {
     @Autowired
     QuizService quizService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Quiz> getAllQuizzes() {
         return quizService.getAllQuizzes();
     }

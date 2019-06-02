@@ -40,7 +40,7 @@ public class ResultService {
         return resultDAO.findById(id)
                 .map(result -> {
                     result.setScore(newResult.getScore());
-                    result.setUnsername(newResult.getUnsername());
+                    result.setUserName(newResult.getUserName());
                     result.setQuiz(newResult.getQuiz());
                     return resultDAO.save(result);
                 })

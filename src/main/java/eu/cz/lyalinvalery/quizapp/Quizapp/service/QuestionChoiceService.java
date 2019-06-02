@@ -38,7 +38,7 @@ public class QuestionChoiceService {
         return questionChoiceDAO.findById(id)
                 .map(qChoice -> {
                     qChoice.setQuestion(newQuestionChoice.getQuestion());
-                    qChoice.setRight(newQuestionChoice.isRight());
+                    qChoice.setIsRight(newQuestionChoice.getIsRight());
                     qChoice.setChoiceText(newQuestionChoice.getChoiceText());
                     return questionChoiceDAO.save(qChoice);
                 })

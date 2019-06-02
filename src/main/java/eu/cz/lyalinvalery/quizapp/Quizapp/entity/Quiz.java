@@ -25,7 +25,7 @@ public class Quiz {
             inverseJoinColumns = @JoinColumn(name = "question_id", referencedColumnName = "id"))
     private List<Question> questions;
 
-    @OneToMany(mappedBy = "quiz")
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.PERSIST)
     private List<Result> results;
 
     public Long getId() {
@@ -75,4 +75,14 @@ public class Quiz {
     public void setResults(List<Result> results) {
         this.results = results;
     }
+
+    public Quiz(String name, String type, double minPercentage, List<Question> questions, List<Result> results) {
+        this.name = name;
+        this.type = type;
+        this.minPercentage = minPercentage;
+        this.questions = questions;
+        this.results = results;
+    }
+
+    public Quiz (){}
 }

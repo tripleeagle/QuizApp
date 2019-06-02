@@ -28,7 +28,8 @@ public class QuizService {
     }
 
     public Quiz addQuiz (Quiz quiz){
-        return quizDAO.save(quiz);
+        Quiz newQuiz = new Quiz(quiz.getName(),quiz.getType(),quiz.getMinPercentage(),quiz.getQuestions(),quiz.getResults());
+        return quizDAO.save(newQuiz);
     }
 
     public void deleteQuizById ( Long id ){
