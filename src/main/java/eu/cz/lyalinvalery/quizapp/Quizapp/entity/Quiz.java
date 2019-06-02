@@ -17,8 +17,6 @@ public class Quiz {
 
     private String type;
 
-    private int maxTime;
-
     private double minPercentage;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -52,14 +50,6 @@ public class Quiz {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public int getMaxTime() {
-        return maxTime;
-    }
-
-    public void setMaxTime(int maxTime) {
-        this.maxTime = maxTime;
     }
 
     public double getMinPercentage() {

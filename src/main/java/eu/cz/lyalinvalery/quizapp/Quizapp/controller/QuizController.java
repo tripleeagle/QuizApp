@@ -19,7 +19,7 @@ public class QuizController {
     QuizService quizService;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Quiz> getAllQuizs() {
+    public List<Quiz> getAllQuizzes() {
         return quizService.getAllQuizzes();
     }
 
@@ -30,9 +30,8 @@ public class QuizController {
 
     @RequestMapping(value = "/addQuiz", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody()
-    public Quiz addQuiz(@RequestBody Quiz Quiz) {
-        return quizService.addQuiz(Quiz);
+    public Quiz addQuiz(@RequestBody Quiz quiz) {
+        return quizService.addQuiz(quiz);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

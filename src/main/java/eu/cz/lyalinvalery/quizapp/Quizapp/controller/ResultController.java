@@ -30,9 +30,8 @@ public class ResultController {
 
     @RequestMapping(value = "/addQuiz", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody()
-    public Result addQuiz(@RequestBody Result Result) {
-        return resultService.addResult(Result);
+    public Result addQuiz(@RequestBody Result result) {
+        return resultService.addResult(result);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

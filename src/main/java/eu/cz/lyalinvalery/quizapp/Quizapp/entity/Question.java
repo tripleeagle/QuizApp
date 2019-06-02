@@ -1,5 +1,7 @@
 package eu.cz.lyalinvalery.quizapp.Quizapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class Question {
     private String textQuestion;
 
     @ManyToMany(mappedBy = "questions")
+    @JsonIgnore
     private List<Quiz> quizzes;
 
     @OneToMany(mappedBy = "question")
@@ -39,11 +42,11 @@ public class Question {
         this.complexity = complexity;
     }
 
-    public String getQuestion() {
+    public String getQuestionText() {
         return textQuestion;
     }
 
-    public void setQuestion(String textQuestion) {
+    public void setQuestionText(String textQuestion) {
         this.textQuestion = textQuestion;
     }
 
@@ -62,4 +65,12 @@ public class Question {
     public void setQuestionChoices(List<QuestionChoice> questionChoices) {
         this.questionChoices = questionChoices;
     }
+
+    /*public List<Long> getQuizIdList (){
+        List<Long> quizIdList = new ArrayList();
+        for ( Quiz quiz : quizzes )
+            quizIdList.add(quiz.getId());
+        return quizIdList;
+    }*/
+
 }

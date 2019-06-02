@@ -1,5 +1,7 @@
 package eu.cz.lyalinvalery.quizapp.Quizapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -18,6 +20,7 @@ public class Result {
 
     @ManyToOne
     @JoinColumn(name="quiz_id")
+    @JsonIgnore
     private Quiz quiz;
 
     public Long getId() {

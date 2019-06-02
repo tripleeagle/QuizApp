@@ -1,5 +1,7 @@
 package eu.cz.lyalinvalery.quizapp.Quizapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -12,12 +14,13 @@ public class QuestionChoice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String choice;
+    private String choiceText;
 
     private boolean isRight;
 
     @ManyToOne
-    @JoinColumn(name="library_id")
+    @JoinColumn(name="question_id")
+    @JsonIgnore
     private Question question;
 
     public Long getId() {
@@ -28,12 +31,12 @@ public class QuestionChoice {
         this.id = id;
     }
 
-    public String getChoice() {
-        return choice;
+    public String getChoiceText() {
+        return choiceText;
     }
 
-    public void setChoice(String choice) {
-        this.choice = choice;
+    public void setChoiceText(String choice) {
+        this.choiceText = choice;
     }
 
     public boolean isRight() {

@@ -25,14 +25,14 @@ public class QuestionController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Question getQuestion ( @PathVariable Long id ){
+        Question question = questionService.getQuestion(id);
         return questionService.getQuestion(id);
     }
 
     @RequestMapping(value = "/addQuestion", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody()
-    public Question addQuestion(@RequestBody Question Question) {
-        return questionService.addQuestion(Question);
+    public Question addQuestion(@RequestBody Question question) {
+        return questionService.addQuestion(question);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

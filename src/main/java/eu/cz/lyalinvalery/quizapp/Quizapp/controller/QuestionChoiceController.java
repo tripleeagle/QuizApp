@@ -28,9 +28,8 @@ public class QuestionChoiceController {
         return questionChoiceService.getQuestionChoice(id);
     }
 
-    @RequestMapping(value = "/addquestionchoice", method = RequestMethod.POST,
+    @RequestMapping(value = "/addQuestionChoice", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody()
     public QuestionChoice addQuestionChoice(@RequestBody QuestionChoice questionChoice) {
         return questionChoiceService.addQuestionChoice(questionChoice);
     }
@@ -42,7 +41,6 @@ public class QuestionChoiceController {
 
     @RequestMapping(value = "/updateQuestionChoice", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody()
     public void updateQuestionChoice(@RequestBody QuestionChoice questionChoice) {
         questionChoiceService.updateQuestionChoice(questionChoice);
     }
