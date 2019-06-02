@@ -1,9 +1,6 @@
 package eu.cz.lyalinvalery.quizapp.Quizapp.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -14,7 +11,7 @@ public class Quiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     private String name;
 
@@ -24,13 +21,20 @@ public class Quiz {
 
     private double minPercentage;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "quiz_question",
+            joinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "question_id", referencedColumnName = "id"))
     private List<Question> questions;
 
-    public Integer getId() {
+    @OneToMany(mappedBy = "quiz")
+    private List<Result> results;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

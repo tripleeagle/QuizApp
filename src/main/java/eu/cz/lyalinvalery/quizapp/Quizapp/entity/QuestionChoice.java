@@ -1,9 +1,6 @@
 package eu.cz.lyalinvalery.quizapp.Quizapp.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author Lyalin Valeriy (lyalival)
@@ -13,19 +10,21 @@ public class QuestionChoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     private String choice;
 
     private boolean isRight;
 
+    @ManyToOne
+    @JoinColumn(name="library_id")
     private Question question;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

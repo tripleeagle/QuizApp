@@ -11,19 +11,23 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     private int complexity;
 
-    private String question;
+    private String textQuestion;
 
+    @ManyToMany(mappedBy = "questions")
     private List<Quiz> quizzes;
 
-    public Integer getId() {
+    @OneToMany(mappedBy = "question")
+    private List<QuestionChoice> questionChoices;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,11 +40,11 @@ public class Question {
     }
 
     public String getQuestion() {
-        return question;
+        return textQuestion;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setQuestion(String textQuestion) {
+        this.textQuestion = textQuestion;
     }
 
     public List<Quiz> getQuizzes() {
@@ -49,5 +53,13 @@ public class Question {
 
     public void setQuizzes(List<Quiz> quizzes) {
         this.quizzes = quizzes;
+    }
+
+    public List<QuestionChoice> getQuestionChoices() {
+        return questionChoices;
+    }
+
+    public void setQuestionChoices(List<QuestionChoice> questionChoices) {
+        this.questionChoices = questionChoices;
     }
 }
