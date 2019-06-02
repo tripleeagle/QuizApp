@@ -24,7 +24,6 @@ public class QuizService {
     }
 
     public Quiz getQuiz ( Long id ){
-        Quiz quiz = quizDAO.findById(id).get();
         return quizDAO.findById(id).get();
     }
 
@@ -34,5 +33,21 @@ public class QuizService {
 
     public void deleteQuizById ( Long id ){
         quizDAO.deleteById(id);
+    }
+
+    public Quiz replaceByID ( Quiz newQuiz, Long id){
+        return quizDAO.findById(id)
+                .map(quiz -> {
+                    quiz.setMinPercentage(newQuiz.getMinPercentage());
+                    quiz.setName(newQuiz.getName());
+                    quiz.setQuestions(newQuiz.getQuestions());
+                    quiz.setType(newQuiz.getType());
+                    quiz.setResults(newQuiz.getResults());
+                    return quizDAO.save(quiz);
+                })
+                .orElseGet(() -> {
+                    newQuiz.setId(id);
+                    return quizDAO.save(newQuiz);
+                });
     }
 }

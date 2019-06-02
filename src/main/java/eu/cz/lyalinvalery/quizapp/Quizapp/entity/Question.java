@@ -17,7 +17,7 @@ public class Question {
 
     private int complexity;
 
-    private String textQuestion;
+    private String questionText;
 
     @ManyToMany(mappedBy = "questions")
     @JsonIgnore
@@ -38,16 +38,16 @@ public class Question {
         return complexity;
     }
 
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
+
     public void setComplexity(int complexity) {
         this.complexity = complexity;
-    }
-
-    public String getQuestionText() {
-        return textQuestion;
-    }
-
-    public void setQuestionText(String textQuestion) {
-        this.textQuestion = textQuestion;
     }
 
     public List<Quiz> getQuizzes() {
@@ -66,11 +66,5 @@ public class Question {
         this.questionChoices = questionChoices;
     }
 
-    /*public List<Long> getQuizIdList (){
-        List<Long> quizIdList = new ArrayList();
-        for ( Quiz quiz : quizzes )
-            quizIdList.add(quiz.getId());
-        return quizIdList;
-    }*/
 
 }

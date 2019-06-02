@@ -67,4 +67,12 @@ public class Quiz {
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
 }

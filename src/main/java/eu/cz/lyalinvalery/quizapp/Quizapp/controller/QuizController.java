@@ -1,5 +1,6 @@
 package eu.cz.lyalinvalery.quizapp.Quizapp.controller;
 
+import eu.cz.lyalinvalery.quizapp.Quizapp.entity.Question;
 import eu.cz.lyalinvalery.quizapp.Quizapp.entity.Quiz;
 import eu.cz.lyalinvalery.quizapp.Quizapp.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class QuizController {
         return quizService.getAllQuizzes();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "getById/{id}", method = RequestMethod.GET)
     public Quiz getQuiz ( @PathVariable Long id ){
         return quizService.getQuiz(id);
     }
@@ -37,5 +38,10 @@ public class QuizController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteQuiz ( @PathVariable Long id ){
         quizService.deleteQuizById(id);
+    }
+
+    @PutMapping("/replace/{id}")
+    Quiz replaceQuiz(@RequestBody Quiz newQuiz, @PathVariable Long id) {
+        return quizService.replaceByID(newQuiz,id);
     }
 }

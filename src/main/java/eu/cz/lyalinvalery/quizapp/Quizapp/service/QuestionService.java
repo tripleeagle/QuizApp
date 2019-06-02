@@ -34,4 +34,19 @@ public class QuestionService {
     public void deleteQuestionById ( Long id ){
         questionDAO.deleteById(id);
     }
+
+    public Question replaceByID ( Question newQuestion, Long id){
+        return questionDAO.findById(id)
+                .map(question -> {
+                    question.setComplexity(newQuestion.getComplexity());
+                    question.setQuestionChoices(newQuestion.getQuestionChoices());
+                    question.setQuizzes(newQuestion.getQuizzes());
+                    question.setQuestionText(newQuestion.getQuestionText());
+                    return questionDAO.save(question);
+                })
+                .orElseGet(() -> {
+                    newQuestion.setId(id);
+                    return questionDAO.save(newQuestion);
+                });
+    }
 }

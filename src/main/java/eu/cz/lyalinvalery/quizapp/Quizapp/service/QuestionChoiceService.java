@@ -4,7 +4,6 @@ import eu.cz.lyalinvalery.quizapp.Quizapp.dao.QuestionChoiceDAO;
 import eu.cz.lyalinvalery.quizapp.Quizapp.entity.QuestionChoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +34,17 @@ public class QuestionChoiceService {
         questionChoiceDAO.deleteById(id);
     }
 
-    public void updateQuestionChoice ( QuestionChoice questionChoice ){
-        //TODO
-        deleteQuestionChoiceById(questionChoice.getId());
-        addQuestionChoice(questionChoice);
+    public QuestionChoice replaceByID ( QuestionChoice newQuestionChoice, Long id){
+        return questionChoiceDAO.findById(id)
+                .map(qChoice -> {
+                    qChoice.setQuestion(newQuestionChoice.getQuestion());
+                    qChoice.setRight(newQuestionChoice.isRight());
+                    qChoice.setChoiceText(newQuestionChoice.getChoiceText());
+                    return questionChoiceDAO.save(qChoice);
+                })
+                .orElseGet(() -> {
+                    newQuestionChoice.setId(id);
+                    return questionChoiceDAO.save(newQuestionChoice);
+                });
     }
 }

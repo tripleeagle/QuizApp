@@ -23,7 +23,7 @@ public class ResultController {
         return resultService.getAllResults();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "getById/{id}", method = RequestMethod.GET)
     public Result getQuiz ( @PathVariable Long id ){
         return resultService.getResult(id);
     }
@@ -34,8 +34,13 @@ public class ResultController {
         return resultService.addResult(result);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "deleteById/{id}", method = RequestMethod.DELETE)
     public void deleteQuiz ( @PathVariable Long id ){
         resultService.deleteResultById(id);
+    }
+
+    @PutMapping("/replace/{id}")
+    Result replaceByID(@RequestBody Result newResult, @PathVariable Long id) {
+        return resultService.replaceByID(newResult,id);
     }
 }

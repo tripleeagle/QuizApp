@@ -1,6 +1,7 @@
 package eu.cz.lyalinvalery.quizapp.Quizapp.controller;
 
 import eu.cz.lyalinvalery.quizapp.Quizapp.entity.Question;
+import eu.cz.lyalinvalery.quizapp.Quizapp.entity.QuestionChoice;
 import eu.cz.lyalinvalery.quizapp.Quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,14 +19,14 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Question> getAllQuestions() {
         return questionService.getAllQuestions();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+
+    @RequestMapping(value = "getById/{id}", method = RequestMethod.GET)
     public Question getQuestion ( @PathVariable Long id ){
-        Question question = questionService.getQuestion(id);
         return questionService.getQuestion(id);
     }
 
@@ -35,8 +36,13 @@ public class QuestionController {
         return questionService.addQuestion(question);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "deleteById/{id}", method = RequestMethod.DELETE)
     public void deleteQuestion ( @PathVariable Long id ){
         questionService.deleteQuestionById(id);
+    }
+
+    @PutMapping("/replace/{id}")
+    Question replaceQuestion(@RequestBody Question newQuestion, @PathVariable Long id) {
+        return questionService.replaceByID(newQuestion,id);
     }
 }
